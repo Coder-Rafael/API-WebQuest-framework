@@ -1,5 +1,7 @@
 package br.com.apiWebQuest;
-
+// Autor: RafaelDev3590
+// Data de Criação: 17 de outubro de 2023
+// Versão: 1.0
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
