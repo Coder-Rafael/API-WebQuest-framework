@@ -14,7 +14,7 @@ backToLoginButton.addEventListener("click", voltarParaTelaDeLogin);
 
 function voltarParaTelaDeLogin() {
     // Redirecione o usuário de volta à tela de login
-    window.location.href = '/webQuest/index.html';
+    window.location.href = '/';
 }
 
 const questionario = document.querySelector(".questionario");
