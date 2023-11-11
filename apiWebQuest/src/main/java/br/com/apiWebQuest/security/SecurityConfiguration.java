@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -23,17 +24,16 @@ public class SecurityConfiguration {
     
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        System.out.println("###Chegou no Filtro de segurança");
+        System.out.println("Metodo Estatico");
         return httpSecurity
         .csrf(csfr -> csfr.disable())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(authorize -> authorize
             .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
             .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-            //.requestMatchers(HttpMethod.GET, "/list/ranking").permitAll()
-            //.requestMatchers(HttpMethod.PUT, "/list/sendQuest").permitAll()
+            .requestMatchers(HttpMethod.GET, "/**").permitAll()
             .anyRequest().authenticated()
-        )  
+        ) 
         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
         .build();  
     }  
